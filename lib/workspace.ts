@@ -1,0 +1,58 @@
+export interface WorkspaceCard {
+  id: string;
+  title: string;
+  x: string;
+  y: string;
+  width: number;
+  height: number;
+  color: string;
+  rotation: number;
+  delay: number;
+}
+
+export const workspaceCards: WorkspaceCard[] = [
+  {
+    id: "meee",
+    title: "meee",
+    x: "12%",
+    y: "18%",
+    width: 320,
+    height: 220,
+    color: "#d9f5df",
+    rotation: -2,
+    delay: 0,
+  },
+  {
+    id: "work",
+    title: "my workkk",
+    x: "47%",
+    y: "15%",
+    width: 450,
+    height: 300,
+    color: "#dbe8ff",
+    rotation: 1,
+    delay: 0.2,
+  },
+  {
+    id: "projects",
+    title: "other projectss",
+    x: "18%",
+    y: "58%",
+    width: 420,
+    height: 210,
+    color: "#efe1ff",
+    rotation: -1,
+    delay: 0.4,
+  },
+  {
+    id: "contact",
+    title: "contacttt",
+    x: "68%",
+    y: "62%",
+    width: 250,
+    height: 170,
+    color: "#ffe7db",
+    rotation: 2,
+    delay: 0.6,
+  },
+];

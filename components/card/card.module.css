@@ -1,0 +1,71 @@
+.card {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding: 28px;
+
+  border-radius: 32px;
+
+  background: rgba(255, 255, 255, 0.32);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  overflow: hidden;
+
+  user-select: none;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  cursor: none;
+}
+
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.05)
+  );
+
+  pointer-events: none;
+}
+
+.card h1 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  font-size: 2rem;
+  font-weight: 600;
+
+  color: #232323;
+
+  letter-spacing: -0.03em;
+}
+
+.card p {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 12px;
+
+  color: rgba(35, 35, 35, 0.7);
+
+  line-height: 1.6;
+}
