@@ -3,69 +3,158 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 
-  padding: 28px;
+  padding: 38px;
 
-  border-radius: 32px;
+  border-radius: 36px;
 
-  background: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.42);
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
 
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.55);
 
   overflow: hidden;
 
   user-select: none;
+  cursor: none;
 
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-
-  cursor: none;
+    border-color .35s,
+    background .35s,
+    box-shadow .35s;
 }
 
 .card::before {
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   border-radius: inherit;
 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.28),
-    rgba(255, 255, 255, 0.05)
+    rgba(255,255,255,.38),
+    rgba(255,255,255,.08)
   );
 
   pointer-events: none;
+
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  height: 100%;
 }
 
 .card h1 {
-  position: relative;
-  z-index: 2;
-
   margin: 0;
 
-  font-size: 2rem;
+  padding-top: 4px;
+
+  font-size: 2.75rem;
   font-weight: 600;
 
-  color: #232323;
+  line-height: 1;
 
-  letter-spacing: -0.03em;
+  letter-spacing: -.05em;
+
+  color: #232323;
 }
 
-.card p {
-  position: relative;
+/* ---------- ticker ---------- */
+
+.ticker {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 18px;
+
+  overflow: hidden;
+
   z-index: 2;
 
-  margin-top: 12px;
+  white-space: nowrap;
+}
 
-  color: rgba(35, 35, 35, 0.7);
+.track {
+  display: inline-flex;
 
-  line-height: 1.6;
+  align-items: center;
+
+  width: max-content;
+
+  white-space: nowrap;
+
+  will-change: transform;
+
+  animation: marquee 18s linear infinite;
+}
+
+.track span {
+  display: inline-flex;
+
+  align-items: center;
+
+  flex-shrink: 0;
+
+  padding-right: 2rem;
+
+  font-size: .95rem;
+  font-weight: 500;
+
+  letter-spacing: .02em;
+
+  color: rgba(35,35,35,.58);
+}
+
+.dot {
+  margin: 0 .45rem;
+
+  opacity: .45;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- contact ---------- */
+
+.centered {
+  justify-content: center;
+  align-items: center;
+}
+
+.centered .content {
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+.centered h1 {
+  margin: 0;
+
+  text-align: center;
+}
+
+.centered .ticker {
+  display: none;
 }

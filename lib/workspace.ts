@@ -1,6 +1,7 @@
 export interface WorkspaceCard {
   id: string;
   title: string;
+  subtitle?: string;
   x: string;
   y: string;
   width: number;
@@ -14,6 +15,7 @@ export const workspaceCards: WorkspaceCard[] = [
   {
     id: "meee",
     title: "meee",
+    subtitle: "designer · developer",
     x: "12%",
     y: "18%",
     width: 320,
@@ -25,6 +27,7 @@ export const workspaceCards: WorkspaceCard[] = [
   {
     id: "work",
     title: "my workkk",
+    subtitle: "the pics I takeee",
     x: "47%",
     y: "15%",
     width: 450,
@@ -36,6 +39,7 @@ export const workspaceCards: WorkspaceCard[] = [
   {
     id: "projects",
     title: "other projectss",
+    subtitle: "kwel shi I made",
     x: "18%",
     y: "58%",
     width: 420,

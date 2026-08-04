@@ -10,6 +10,7 @@ export default function Workspace() {
         <Card
           key={card.id}
           title={card.title}
+          subtitle={card.subtitle}
           x={card.x}
           y={card.y}
           width={card.width}

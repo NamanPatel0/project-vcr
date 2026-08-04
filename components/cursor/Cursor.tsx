@@ -16,42 +16,56 @@ export default function Cursor() {
     y: 0,
   });
 
+  const targetSize = useRef(12);
+  const currentSize = useRef(12);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
+
+      const target = e.target as HTMLElement;
+
+      if (target.closest(".card")) {
+        targetSize.current = 42;
+      } else {
+        targetSize.current = 12;
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
-    let animationFrame: number;
+    let frame: number;
 
     const animate = () => {
-      const size = 12;
-
       position.current.x +=
-        (mouse.current.x - position.current.x) * 0.12;
+        (mouse.current.x - position.current.x) * 0.14;
 
       position.current.y +=
-        (mouse.current.y - position.current.y) * 0.12;
+        (mouse.current.y - position.current.y) * 0.14;
+
+      currentSize.current +=
+        (targetSize.current - currentSize.current) * 0.18;
 
       if (cursorRef.current) {
-        cursorRef.current.style.width = `${size}px`;
-        cursorRef.current.style.height = `${size}px`;
+        cursorRef.current.style.width = `${currentSize.current}px`;
+        cursorRef.current.style.height = `${currentSize.current}px`;
 
-        cursorRef.current.style.transform = `translate3d(${
-          position.current.x - size / 2
-        }px, ${position.current.y - size / 2}px, 0)`;
+        cursorRef.current.style.transform = `translate3d(
+          ${position.current.x - currentSize.current / 2}px,
+          ${position.current.y - currentSize.current / 2}px,
+          0
+        )`;
       }
 
-      animationFrame = requestAnimationFrame(animate);
+      frame = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrame);
     };
   }, []);
 
