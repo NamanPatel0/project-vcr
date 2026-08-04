@@ -85,11 +85,11 @@
 
   z-index: 2;
 
-  white-space: nowrap;
+  pointer-events: none;
 }
 
 .track {
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
@@ -98,41 +98,19 @@
   white-space: nowrap;
 
   will-change: transform;
-
-  animation: marquee 18s linear infinite;
 }
 
 .track span {
-  display: inline-flex;
+  flex: 0 0 auto;
 
-  align-items: center;
-
-  flex-shrink: 0;
-
-  padding-right: 2rem;
+  padding-right: 1.1rem;
 
   font-size: .95rem;
   font-weight: 500;
 
-  letter-spacing: .02em;
+  letter-spacing: .015em;
 
   color: rgba(35,35,35,.58);
-}
-
-.dot {
-  margin: 0 .45rem;
-
-  opacity: .45;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0%);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* ---------- contact ---------- */

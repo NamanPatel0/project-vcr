@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Marquee from "./Marquee";
 import styles from "./card.module.css";
 
 interface CardProps {
@@ -83,21 +84,10 @@ export default function Card({
       </div>
 
       {subtitle && (
-        <div className={styles.ticker}>
-          <div
-            className={styles.track}
-            style={{
-              animationDuration: hovered ? "15s" : "18s",
-            }}
-          >
-            {Array.from({ length: 20 }).map((_, i) => (
-              <span key={i}>
-                {subtitle}
-                <span className={styles.dot}> • </span>
-              </span>
-            ))}
-          </div>
-        </div>
+        <Marquee
+          text={subtitle}
+          hovered={hovered}
+        />
       )}
     </motion.div>
   );
