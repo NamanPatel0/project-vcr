@@ -9,20 +9,22 @@ export interface WorkspaceCard {
   color: string;
   rotation: number;
   delay: number;
+  variant?: "default" | "sticker";
 }
 
 export const workspaceCards: WorkspaceCard[] = [
   {
-    id: "meee",
-    title: "meee",
+    id: "me",
+    title: "Naman Patel",
     subtitle: "designer · developer",
     x: "12%",
     y: "18%",
-    width: 320,
-    height: 220,
-    color: "#d9f5df",
+    width: 340,
+    height: 230,
+    color: "#ff6a5f",
     rotation: -2,
     delay: 0,
+    variant: "sticker",
   },
   {
     id: "work",
@@ -35,6 +37,7 @@ export const workspaceCards: WorkspaceCard[] = [
     color: "#dbe8ff",
     rotation: 1,
     delay: 0.2,
+    variant: "default",
   },
   {
     id: "projects",
@@ -47,6 +50,7 @@ export const workspaceCards: WorkspaceCard[] = [
     color: "#efe1ff",
     rotation: -1,
     delay: 0.4,
+    variant: "default",
   },
   {
     id: "contact",
@@ -58,5 +62,6 @@ export const workspaceCards: WorkspaceCard[] = [
     color: "#ffe7db",
     rotation: 2,
     delay: 0.6,
+    variant: "default",
   },
 ];

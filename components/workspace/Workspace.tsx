@@ -1,11 +1,24 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
+
 import Card from "@/components/card/Card";
 import { workspaceCards } from "@/lib/workspace";
 
 export default function Workspace() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        position: "absolute",
+        inset: 0,
+      }}
+    >
       {workspaceCards.map((card) => (
         <Card
           key={card.id}
@@ -18,8 +31,19 @@ export default function Workspace() {
           color={card.color}
           rotation={card.rotation}
           delay={card.delay}
+          variant={card.variant}
+          expanded={expanded === card.id}
+          dimmed={expanded !== null && expanded !== card.id}
+          onClick={() => {
+            if (card.variant === "sticker") {
+              setExpanded((current) =>
+                current === card.id ? null : card.id
+              );
+            }
+          }}
+          onClose={() => setExpanded(null)}
         />
       ))}
-    </>
+    </motion.div>
   );
 }

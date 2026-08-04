@@ -15,6 +15,10 @@ interface CardProps {
   color: string;
   rotation: number;
   delay: number;
+  variant?: "default" | "sticker";
+
+  onClick?: () => void;
+  selected?: boolean;
 }
 
 export default function Card({
@@ -27,15 +31,25 @@ export default function Card({
   color,
   rotation,
   delay,
+  variant = "default",
+  onClick,
+  selected,
 }: CardProps) {
   const isContact = !subtitle;
+  const isSticker = variant === "sticker";
 
   const [hovered, setHovered] = useState(false);
 
   return (
     <motion.div
+      layout
+      layoutId={isSticker ? "about-card" : undefined}
       data-card
-      className={`${styles.card} ${isContact ? styles.centered : ""}`}
+      className={`
+        ${styles.card}
+        ${isContact ? styles.centered : ""}
+        ${isSticker ? styles.sticker : ""}
+      `}
       style={{
         left: x,
         top: y,
@@ -44,7 +58,7 @@ export default function Card({
         rotate: `${rotation}deg`,
         boxShadow: `
           0 25px 60px rgba(0,0,0,.08),
-          0 0 ${hovered ? 170 : 120}px ${color}
+          0 0 ${hovered ? 190 : 140}px ${color}
         `,
       }}
       initial={{
@@ -72,16 +86,34 @@ export default function Card({
           ease: "easeInOut",
           delay,
         },
+        layout: {
+          duration: 0.8,
+        },
       }}
       whileHover={{
         y: -10,
       }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
+      onClick={isSticker ? onClick : undefined}
+      whileTap={isSticker ? { scale: 0.985 } : undefined}
     >
-      <div className={styles.content}>
-        <h1>{title}</h1>
-      </div>
+      {isSticker ? (
+        <>
+          <div className={styles.stickerHeader}>
+            <h2>Hello</h2>
+            <p>my name is</p>
+          </div>
+
+          <div className={styles.stickerBody}>
+            <h1>{title}</h1>
+          </div>
+        </>
+      ) : (
+        <div className={styles.content}>
+          <h1>{title}</h1>
+        </div>
+      )}
 
       {subtitle && (
         <Marquee
