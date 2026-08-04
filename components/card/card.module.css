@@ -1,238 +1,362 @@
 .card {
-  position: absolute;
 
-  display: flex;
-  flex-direction: column;
+  position:absolute;
 
-  padding: 38px;
+  display:flex;
+  flex-direction:column;
 
-  border-radius: 36px;
+  border-radius:36px;
 
-  background: rgba(255, 255, 255, 0.42);
+  background:#faf7f2;
 
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  overflow:hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  user-select:none;
 
-  overflow: hidden;
+  cursor:none;
 
-  user-select: none;
-  cursor: none;
+  border:none;
+
+  outline:none;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.08);
 
   transition:
-    border-color .35s,
-    background .35s,
+    border-radius 1s cubic-bezier(.22,1,.36,1),
     box-shadow .35s;
+
 }
+
+
+
+/* glass effect */
 
 .card::before {
-  content: "";
 
-  position: absolute;
-  inset: 0;
+  content:"";
 
-  border-radius: inherit;
+  position:absolute;
 
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,.38),
-    rgba(255,255,255,.08)
-  );
+  inset:0;
 
-  pointer-events: none;
+  border-radius:inherit;
 
-  z-index: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.38),
+      rgba(255,255,255,.08)
+    );
+
+  pointer-events:none;
+
+  z-index:0;
+
 }
+
+
+
+.sticker::before {
+
+  display:none;
+
+}
+
+
 
 /* ---------- default cards ---------- */
 
+
 .content {
-  position: relative;
 
-  z-index: 2;
+  position:relative;
 
-  display: flex;
-  flex-direction: column;
+  z-index:2;
 
-  justify-content: flex-start;
+  display:flex;
 
-  height: 100%;
+  flex-direction:column;
+
+  justify-content:flex-start;
+
+  height:100%;
+
+  padding:38px;
+
 }
+
+
 
 .card h1 {
-  margin: 0;
 
-  padding-top: 4px;
+  margin:0;
 
-  font-size: 2.75rem;
-  font-weight: 600;
+  font-size:2.75rem;
 
-  line-height: 1;
+  font-weight:600;
 
-  letter-spacing: -.05em;
+  line-height:1;
 
-  color: #232323;
+  letter-spacing:-.05em;
+
+  color:#232323;
+
 }
+
+
 
 /* ---------- sticker ---------- */
 
+
 .sticker {
-  padding: 0;
 
-  background: #faf7f2;
+  padding:0;
 
-  border: none;
+  background:#faf7f2;
 
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  border-radius:36px;
+
 }
 
-.sticker::before {
-  display: none;
+
+
+/* ---------- red header ---------- */
+
+
+.redMorph {
+
+  position:relative;
+
+  z-index:5;
+
+  height:112px;
+
+  width:100%;
+
+  flex-shrink:0;
+
+  background:#ef4f43;
+
+  color:white;
+
+  padding:22px 28px 0;
+
+  border-radius:36px 36px 0 0;
+
+  overflow:hidden;
+
 }
 
-.stickerHeader {
-  position: relative;
 
-  z-index: 2;
 
-  height: 132px;
+.redMorph::after {
 
-  background: #ef4f43;
+  content:"";
 
-  color: white;
+  position:absolute;
 
-  padding: 22px 28px 0;
+  left:0;
+
+  right:0;
+
+  bottom:0;
+
+  height:3px;
+
+  background:rgba(255,255,255,.95);
+
 }
 
-.stickerHeader::after {
-  content: "";
 
-  position: absolute;
 
-  left: 0;
-  right: 0;
-  bottom: 0;
+.redMorph h2 {
 
-  height: 3px;
+  margin:0;
 
-  background: rgba(255,255,255,.95);
+  font-size:2.2rem;
+
+  font-weight:800;
+
+  line-height:1;
+
 }
 
-.stickerHeader h2 {
-  margin: 0;
 
-  font-size: 2.2rem;
-  font-weight: 700;
 
-  line-height: 1;
+.redMorph p {
+
+  margin:6px 0 0;
+
+  font-size:1.15rem;
+
+  font-weight:500;
+
 }
 
-.stickerHeader p {
-  margin: 6px 0 0;
 
-  font-size: 1.15rem;
-  font-weight: 500;
 
-  opacity: .95;
-}
+/* ---------- body ---------- */
+
 
 .stickerBody {
-  position: relative;
 
-  z-index: 2;
+  position:relative;
 
-  flex: 1;
+  z-index:3;
 
-  padding: 2px 28px 0;
+  flex:1;
+
+  padding:18px 28px 70px;
+
 }
+
+
 
 .stickerBody h1 {
-  margin: 0;
 
-  font-size: 3rem;
+  margin:0;
 
-  font-weight: 700;
+  font-size:3rem;
 
-  line-height: 1;
+  font-weight:700;
 
-  letter-spacing: -.055em;
+  line-height:1;
 
-  color: #161616;
+  letter-spacing:-.055em;
+
+  color:#161616;
+
 }
+
+
+
+.aboutText {
+
+  margin-top:22px;
+
+  max-width:90%;
+
+  font-size:1rem;
+
+  line-height:1.5;
+
+  color:#333;
+
+}
+
+
 
 /* ---------- ticker ---------- */
 
-.ticker {
-  position: absolute;
 
-  left: 0;
-  right: 0;
-  bottom: 18px;
+.cardTicker {
 
-  overflow: hidden;
+  position:absolute;
 
-  z-index: 3;
+  left:0;
 
-  pointer-events: none;
+  right:0;
+
+  bottom:10px;
+
+  height:20px;
+
+  overflow:hidden;
+
+  z-index:50;
+
+  pointer-events:none;
+
 }
 
-/* Sticker-specific ticker position */
 
-.sticker .ticker {
-  bottom: 10px;
-}
 
 .track {
-  display: flex;
 
-  align-items: center;
+  display:flex;
 
-  width: max-content;
+  align-items:center;
 
-  white-space: nowrap;
+  width:max-content;
 
-  will-change: transform;
+  white-space:nowrap;
+
+  will-change:transform;
+
 }
+
+
 
 .track span {
-  flex: 0 0 auto;
 
-  padding-right: 1.1rem;
+  flex:0 0 auto;
 
-  font-size: .95rem;
-  font-weight: 500;
+  padding-right:1.1rem;
 
-  letter-spacing: .015em;
+  font-size:.95rem;
 
-  color: rgba(35,35,35,.58);
+  font-weight:500;
+
+  letter-spacing:.015em;
+
+  color:rgba(35,35,35,.58);
+
 }
+
+
 
 .sticker .track span {
-  color: #111;
+
+  color:#111;
+
 }
+
+
 
 /* ---------- contact ---------- */
 
+
 .centered {
-  justify-content: center;
-  align-items: center;
+
+  justify-content:center;
+
+  align-items:center;
+
 }
+
+
 
 .centered .content {
-  justify-content: center;
-  align-items: center;
 
-  height: 100%;
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  width:100%;
+
+  height:100%;
+
+  padding:38px;
+
 }
 
-.centered h1 {
-  margin: 0;
 
-  text-align: center;
+
+.centered .content h1 {
+
+  margin:0;
+
+  text-align:center;
+
 }
 
-.centered .ticker {
-  display: none;
+
+
+.centered .cardTicker {
+
+  display:none;
+
 }
