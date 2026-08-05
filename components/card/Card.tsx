@@ -5,49 +5,78 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Marquee from "./Marquee";
+import CameraHUD from "./CameraHUD";
+import TerminalHUD from "./TerminalHUD";
 
 import styles from "./card.module.css";
 
 
 interface CardProps {
+
   title: string;
+
   subtitle?: string;
 
   x: string;
+
   y: string;
 
   width: number;
+
   height: number;
 
   color: string;
+
   rotation: number;
+
   delay: number;
 
   variant?: "default" | "sticker";
 
   onClick?: () => void;
+
 }
 
 
+
 export default function Card({
+
   title,
+
   subtitle,
+
   x,
+
   y,
+
   width,
+
   height,
+
   color,
+
   rotation,
+
   delay,
+
   variant = "default",
+
   onClick,
+
 }: CardProps) {
 
 
-  const isContact = !subtitle;
   const isSticker = variant === "sticker";
 
+  const isWork = title === "my workkk";
+
+  const isProjects = title === "other projectss";
+
+  const isContact = title === "contacttt";
+
+
   const [hovered,setHovered] = useState(false);
+
 
   const router = useRouter();
 
@@ -57,61 +86,103 @@ export default function Card({
 
     <motion.div
 
+
       layout
 
+
       layoutId={
+
         isSticker
+
           ? "about-card"
+
           : undefined
+
       }
+
 
 
       data-card
 
 
+
       className={`
+
         ${styles.card}
+
         ${isContact ? styles.centered : ""}
+
         ${isSticker ? styles.sticker : ""}
+
       `}
+
 
 
       style={{
 
+
         left:x,
+
         top:y,
 
         width,
+
         height,
+
 
         rotate:`${rotation}deg`,
 
+
         zIndex:1,
 
+
+        backgroundColor:
+
+          isSticker
+
+            ? "#faf7f2"
+
+            : color,
+
+
+
         boxShadow:`
+
           0 25px 60px rgba(0,0,0,.08),
+
           0 0 ${hovered ? 190 : 140}px ${color}
+
         `,
+
 
       }}
 
 
 
       initial={{
+
         opacity:0,
+
         scale:.92,
+
         y:30,
+
       }}
 
 
 
       animate={{
 
+
         opacity:1,
 
+
         scale:hovered
+
           ? 1.035
+
           : 1,
+
 
         y:[0,-8,0],
 
@@ -121,50 +192,67 @@ export default function Card({
 
       transition={{
 
+
         opacity:{
+
           duration:.7,
+
           delay,
+
         },
+
 
         scale:{
+
           duration:.25,
+
         },
+
 
         y:{
+
           duration:6,
+
           repeat:Infinity,
+
           repeatType:"mirror",
+
           ease:"easeInOut",
+
           delay,
+
         },
 
+
         layout:{
+
           duration:1.1,
+
           ease:[0.22,1,0.36,1],
-        }
+
+        },
+
 
       }}
 
 
 
       whileHover={{
+
         y:-10,
+
       }}
 
 
 
-      onHoverStart={() =>
-        setHovered(true)
-      }
+      onHoverStart={()=>setHovered(true)}
 
-
-      onHoverEnd={() =>
-        setHovered(false)
-      }
+      onHoverEnd={()=>setHovered(false)}
 
 
 
-      onClick={() => {
+      onClick={()=>{
+
 
         if(isSticker){
 
@@ -172,11 +260,16 @@ export default function Card({
 
         }
 
+
         onClick?.();
+
 
       }}
 
+
+
     >
+
 
 
       {isSticker ? (
@@ -189,14 +282,6 @@ export default function Card({
             layoutId="hello-section"
 
             className={styles.redMorph}
-
-            transition={{
-
-              duration:1.1,
-
-              ease:[0.22,1,0.36,1]
-
-            }}
 
           >
 
@@ -222,14 +307,6 @@ export default function Card({
 
               layoutId="name-text"
 
-              transition={{
-
-                duration:1.1,
-
-                ease:[0.22,1,0.36,1]
-
-              }}
-
             >
 
               {title}
@@ -246,6 +323,7 @@ export default function Card({
 
             <div className={styles.cardTicker}>
 
+
               <Marquee
 
                 text={subtitle}
@@ -254,9 +332,11 @@ export default function Card({
 
               />
 
+
             </div>
 
           )}
+
 
 
         </>
@@ -269,18 +349,44 @@ export default function Card({
 
           <div className={styles.content}>
 
-            <h1>
-              {title}
-            </h1>
+
+{isWork && (
+  <CameraHUD />
+)}
+
+{isProjects && (
+  <TerminalHUD />
+)}
+
+{!isProjects && (
+  <h1>
+    {title}
+  </h1>
+)}
+
+
 
           </div>
 
 
 
 
-          {subtitle && (
+          {subtitle && !isProjects && (
 
-            <div className={styles.cardTicker}>
+            <div
+
+              className={
+
+                isWork
+
+                  ? styles.workTicker
+
+                  : styles.cardTicker
+
+              }
+
+            >
+
 
               <Marquee
 
@@ -290,17 +396,22 @@ export default function Card({
 
               />
 
+
             </div>
 
           )}
 
 
+
         </>
 
+
       )}
+
 
 
     </motion.div>
 
   );
+
 }

@@ -7,8 +7,6 @@
 
   border-radius:36px;
 
-  background:#faf7f2;
-
   overflow:hidden;
 
   user-select:none;
@@ -16,7 +14,6 @@
   cursor:none;
 
   border:none;
-
   outline:none;
 
   box-shadow:
@@ -30,7 +27,8 @@
 
 
 
-/* glass effect */
+/* ---------- glass ---------- */
+
 
 .card::before {
 
@@ -56,7 +54,6 @@
 }
 
 
-
 .sticker::before {
 
   display:none;
@@ -65,7 +62,7 @@
 
 
 
-/* ---------- default cards ---------- */
+/* ---------- default ---------- */
 
 
 .content {
@@ -106,6 +103,46 @@
 
 
 
+/* ---------- camera locked ---------- */
+
+
+.card:has(.cameraTop) {
+
+  background:#111;
+
+}
+
+
+
+.card:has(.cameraTop)::before {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.08),
+      rgba(255,255,255,0)
+    );
+
+}
+
+
+
+.card:has(.cameraTop) .content {
+
+  justify-content:center;
+
+}
+
+
+
+.card:has(.cameraTop) h1 {
+
+  color:white;
+
+}
+
+
+
 /* ---------- sticker ---------- */
 
 
@@ -121,7 +158,7 @@
 
 
 
-/* ---------- red header ---------- */
+/* ---------- sticker header ---------- */
 
 
 .redMorph {
@@ -149,27 +186,6 @@
 }
 
 
-
-.redMorph::after {
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-
-  right:0;
-
-  bottom:0;
-
-  height:3px;
-
-  background:rgba(255,255,255,.95);
-
-}
-
-
-
 .redMorph h2 {
 
   margin:0;
@@ -181,7 +197,6 @@
   line-height:1;
 
 }
-
 
 
 .redMorph p {
@@ -196,16 +211,10 @@
 
 
 
-/* ---------- body ---------- */
+/* ---------- sticker body ---------- */
 
 
 .stickerBody {
-
-  position:relative;
-
-  z-index:3;
-
-  flex:1;
 
   padding:18px 28px 70px;
 
@@ -221,27 +230,7 @@
 
   font-weight:700;
 
-  line-height:1;
-
   letter-spacing:-.055em;
-
-  color:#161616;
-
-}
-
-
-
-.aboutText {
-
-  margin-top:22px;
-
-  max-width:90%;
-
-  font-size:1rem;
-
-  line-height:1.5;
-
-  color:#333;
 
 }
 
@@ -266,8 +255,6 @@
 
   z-index:50;
 
-  pointer-events:none;
-
 }
 
 
@@ -276,13 +263,9 @@
 
   display:flex;
 
-  align-items:center;
-
   width:max-content;
 
   white-space:nowrap;
-
-  will-change:transform;
 
 }
 
@@ -290,15 +273,9 @@
 
 .track span {
 
-  flex:0 0 auto;
-
   padding-right:1.1rem;
 
   font-size:.95rem;
-
-  font-weight:500;
-
-  letter-spacing:.015em;
 
   color:rgba(35,35,35,.58);
 
@@ -306,9 +283,131 @@
 
 
 
-.sticker .track span {
+/* ---------- camera HUD ---------- */
 
-  color:#111;
+
+.cameraTop {
+
+  position:absolute;
+
+  top:28px;
+
+  left:32px;
+
+  right:32px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  font-size:.7rem;
+
+  font-weight:600;
+
+  letter-spacing:.12em;
+
+  color:rgba(255,255,255,.45);
+
+}
+
+
+
+.rec {
+
+  color:#ff4d4d;
+
+  animation:pulse 2s infinite;
+
+}
+
+
+
+.cameraBottom {
+
+  position:absolute;
+
+  bottom:28px;
+
+  left:32px;
+
+  right:32px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  font-size:.7rem;
+
+  letter-spacing:.08em;
+
+  color:rgba(255,255,255,.55);
+
+}
+
+
+
+.workTicker {
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  top:60%;
+
+  height:22px;
+
+  overflow:hidden;
+
+}
+
+
+
+.workTicker span {
+
+  color:rgba(255,255,255,.65);
+
+}
+
+
+
+/* ---------- battery ---------- */
+
+
+.battery {
+
+  position:absolute;
+
+  bottom:58px;
+
+  left:32px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  font-size:.7rem;
+
+  font-weight:600;
+
+  color:rgba(255,255,255,.55);
+
+}
+
+
+
+.greenBars {
+
+  color:#4cff70;
+
+  letter-spacing:.08em;
 
 }
 
@@ -339,24 +438,196 @@
 
   height:100%;
 
-  padding:38px;
+}
+
+
+
+/* ---------- terminal ---------- */
+
+
+.card:has(.terminal) {
+
+  background:#012456;
 
 }
 
 
 
-.centered .content h1 {
+.card:has(.terminal)::before {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.1),
+      rgba(255,255,255,0)
+    );
+
+}
+
+
+
+.terminal {
+
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  flex-direction:column;
+
+  color:white;
+
+  z-index:10;
+
+  overflow:hidden;
+
+}
+
+
+
+/* windows title */
+
+
+.windowBar {
+
+  height:42px;
+
+  flex-shrink:0;
+
+  background:#29479b;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  padding:0 18px;
+
+  font-size:1rem;
+
+  font-weight:700;
+
+}
+
+
+
+.windowTitle {
+
+  font-family:inherit;
+
+}
+
+
+
+.online {
+
+  font-size:.7rem;
+
+  letter-spacing:.08em;
+
+  color:#6dff8a;
+
+  font-weight:700;
+
+}
+
+
+
+/* powershell area */
+
+
+.terminalBody {
+
+  flex:1;
+
+  padding:0 22px 18px;
+
+  overflow:hidden;
+
+  display:flex;
+
+  align-items:flex-start;
+
+  font-family:
+    "Cascadia Code",
+    "Courier New",
+    monospace;
+
+}
+
+
+
+.terminalBody pre {
 
   margin:0;
 
-  text-align:center;
+  width:100%;
+
+  max-height:100%;
+
+  overflow:hidden;
+
+  white-space:pre-wrap;
+
+  font-size:.82rem;
+
+  line-height:1.55;
 
 }
 
 
 
-.centered .cardTicker {
+/* cursor */
 
-  display:none;
+
+.cursor {
+
+  display:inline-block;
+
+  animation:blink .8s infinite;
+
+}
+
+
+
+@keyframes blink {
+
+  50% {
+
+    opacity:0;
+
+  }
+
+}
+
+
+
+/* animations */
+
+
+@keyframes pulse {
+
+  50% {
+
+    opacity:.35;
+
+  }
+
+}
+
+
+
+/* locked camera text */
+
+
+.card:has(.cameraTop) h1 {
+
+  color:white !important;
+
+  position:relative;
+
+  z-index:20;
 
 }
