@@ -10,14 +10,10 @@ export default function Cursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
 
 
-
   const mouse = useRef({
-
     x:0,
     y:0,
-
   });
-
 
 
   const position = useRef({
@@ -36,11 +32,9 @@ export default function Cursor() {
 
 
 
-  const targetSize = useRef(12);
+  const targetSize = useRef(18);
 
-  const currentSize = useRef(12);
-
-
+  const currentSize = useRef(18);
 
   const initialized = useRef(false);
 
@@ -73,7 +67,6 @@ export default function Cursor() {
       const target = e.target as HTMLElement;
 
 
-
       const clickable = target.closest(
 
         "[data-card], button, a, [role='button'], input, textarea"
@@ -82,17 +75,10 @@ export default function Cursor() {
 
 
 
-      if(clickable){
+      targetSize.current = clickable
+        ? 34
+        : 18;
 
-        targetSize.current = 22;
-
-      }
-
-      else{
-
-        targetSize.current = 12;
-
-      }
 
     };
 
@@ -113,25 +99,31 @@ export default function Cursor() {
 
 
       position.current.x +=
+
         (
           mouse.current.x -
           position.current.x
+
         ) * 0.14;
 
 
 
       position.current.y +=
+
         (
           mouse.current.y -
           position.current.y
+
         ) * 0.14;
 
 
 
       currentSize.current +=
+
         (
           targetSize.current -
           currentSize.current
+
         ) * 0.18;
 
 
@@ -147,13 +139,13 @@ export default function Cursor() {
           `${size}px`;
 
 
-
         cursorRef.current.style.height =
           `${size}px`;
 
 
 
         cursorRef.current.style.transform =
+
           `
           translate3d(
             ${position.current.x - size / 2}px,
@@ -161,6 +153,7 @@ export default function Cursor() {
             0
           )
           `;
+
 
       }
 

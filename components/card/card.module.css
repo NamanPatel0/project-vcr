@@ -190,7 +190,7 @@
 
   margin:0;
 
-  font-size:2.2rem;
+  font-size:2.4rem;
 
   font-weight:800;
 
@@ -203,7 +203,7 @@
 
   margin:6px 0 0;
 
-  font-size:1.15rem;
+  font-size:1.25rem;
 
   font-weight:500;
 
@@ -216,7 +216,7 @@
 
 .stickerBody {
 
-  padding:18px 28px 70px;
+  padding:20px 28px 70px;
 
 }
 
@@ -247,7 +247,7 @@
 
   right:0;
 
-  bottom:10px;
+  bottom:12px;
 
   height:20px;
 
@@ -278,6 +278,11 @@
   font-size:.95rem;
 
   color:rgba(35,35,35,.58);
+
+}
+.sticker .track span {
+
+  color:#111;
 
 }
 
