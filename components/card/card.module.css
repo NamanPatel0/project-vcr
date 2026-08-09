@@ -636,3 +636,158 @@
   z-index:20;
 
 }
+
+/* ---------- sticky note ---------- */
+
+.note {
+
+  position:absolute;
+
+  inset:0;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+
+.paper {
+
+  position:relative;
+
+  width:100%;
+
+  height:100%;
+
+  background:#ffe36b;
+
+  border-radius:36px;
+
+  overflow:hidden;
+
+  box-shadow:
+    inset 0 -2px 8px rgba(0,0,0,.05);
+
+}
+
+
+/* notebook lines */
+
+.noteLines {
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 23px,
+      rgba(0,0,0,.22) 24px
+    );
+
+}
+
+
+/* red margin */
+
+.noteLines::before {
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+
+  bottom:0;
+
+  left:34px;
+
+  width:2px;
+
+  background:rgba(255,92,92,.45);
+
+}
+
+
+/* push pin */
+
+.pin {
+
+  position:absolute;
+
+  top:16px;
+
+  right:16px;
+
+  width:22px;
+
+  height:22px;
+
+  border-radius:50%;
+
+  background:#bdbdbd;
+
+  box-shadow:
+    inset -2px -2px 4px rgba(0,0,0,.22),
+    inset 2px 2px 4px rgba(255,255,255,.85),
+    0 3px 8px rgba(0,0,0,.18);
+
+  z-index:20;
+
+}
+
+
+/* tiny shadow under the pin */
+
+.pin::after {
+
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+
+  top:50%;
+
+  width:8px;
+
+  height:8px;
+
+  border-radius:50%;
+
+  transform:translate(-50%,-50%);
+
+  background:rgba(0,0,0,.15);
+
+}
+
+
+.noteTitle {
+
+  position:absolute;
+
+  left:56px;
+
+  top:48px;
+
+  margin:0;
+
+  font-size:2rem;
+
+  line-height:1;
+
+  font-weight:800;
+
+  color:#494949;
+
+  letter-spacing:-.03em;
+
+font-family: "Caveat", cursive;
+font-size:2.2rem;
+font-weight:700;
+}
